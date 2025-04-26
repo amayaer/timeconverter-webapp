@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> <title 24 ↔ 12-Hour Converter></title> <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+        </head>
+
+    <body>
+        <div class="container">
+            <h1 class= "header"> <i class="far fa-clock"></i> 24 ↔ 12-Hour Converter </h1>
+            
+        <form method="POST">
+            <div class = "label-container">   
+            {% if direction == "to_12" %}
+            <label>24-Hour Time</label>
+            <label>12-Hour Time </label>
+            {% endif %}
+
+            {% if direction == "to_24" %}
+            <label>12-Hour Time</label>
+            <label>24-Hour Time </label>
+            {% endif %}
+            </div>
+
+            <div class="equal-sign">=</div>
+
+
+            <div class = "input-container">
+            {% if direction == "to_12" %}
+            <input type="text" id="time_24" name="time_24" placeholder="e.g. 18:30" value= "{{ result if direction == 'to_24' else '' }}">  
+            <input type="text" id="time_12" name="time_12" placeholder="e.g. 6:30" value= "{{ result if direction == 'to_12' else '' }}">
+            {% endif %}
+
+            
+            {% if direction == "to_24" %}
+            <div class = "input2-container">
+            <input type="text" id="time_12" name="time_12" placeholder="e.g. 6:30" value= "{{ result if direction == 'to_12' else '' }}"> 
+            <select class = "period" name="period">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+            </select>
+            </div>
+            <input type="text" id="time_24" name="time_24" placeholder="e.g. 18:30" value= "{{ result if direction == 'to_24' else '' }}">
+            {% endif %}
+            </div>
+
+
+            <input type="hidden" name="current_direction" value="{{ direction }}">
+           
+        
+            <div class= "buttons">
+            <button type = "submit" class = "convert" name ="convert">Convert</button>
+            <button type = "submit" class = "swap" name ="swap">Swap ↔ </button>
+            </div>
+
+        </div> 
+        </form>
+    </body>
+</html> 
+
+    
